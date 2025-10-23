@@ -605,7 +605,7 @@ function calculateAmount(tableType, element) {
     const totalAmount = (litres * ratePerLitre);
 
     // Update the Rate cell and the Total Amount cell
-    row.querySelector(`.rate-${tableType}`).textContent = ratePerLitre.toFixed(2);
+
     row.querySelector(`.total-amount-${tableType}`).textContent = totalAmount.toFixed(2);
 
     calculateTotals();
@@ -797,4 +797,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
 // --- End of Updated scripts.js ---
