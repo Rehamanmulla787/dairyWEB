@@ -1,0 +1,348 @@
+/* Existing styles for on-screen presentation */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+.dark-mode input[type="date"] {
+    color-scheme: white;
+}
+.dark-mode {
+    background-color: #1a202c;
+    color: #cbd5e0;
+}
+.dark-mode .bg-white {
+    background-color: #2d3748 !important;
+    color: #edf2f7;
+}
+.dark-mode .border-gray-300 {
+    border-color: #4a5568;
+}
+.dark-mode .table th,
+.dark-mode .table td {
+    background-color: #2d3748;
+    color: #edf2f7;
+}
+.dark-mode .control-button {
+    background-color: #4a5568;
+    border-color: #718096;
+}
+.dark-mode .control-button:hover {
+    background-color: #2d3748;
+}
+.dark-mode input {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #4a5568;
+}
+
+.dark-mode select {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #4a5568;
+}
+.dark-mode input::placeholder {
+    color: #aaa;
+}
+.dark-mode input:focus {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #718096 !important;
+    outline: none !important;
+}
+
+/* Dark mode toggle button styles */
+.dark-mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #4a5568;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #2d3748;
+    transform: scale(1.1);
+}
+
+.bg-white{
+    border: 2px solid black;
+}
+
+input[type="number"] {
+    appearance: textfield;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-left: 0px;
+}
+img{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    
+}
+
+
+.mulla-dairy {
+    font-size: 3rem;
+    font-family: 'Pacifico', cursive;
+    color: #2a8cb3;
+    padding-bottom: 20px;
+}
+.text-4xl{
+    font-family: "Gill Sans", sans-serif;
+    align-items: center;
+}
+
+.container {
+    background-color: #d7fadf;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);    
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #edf2f7;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.table td {
+    background-color: #f9fafb;
+}
+
+.input {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.input:focus {
+    background-color: #e2e8f0;
+    border-color: #215688;
+    outline: none;
+}
+
+.signature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.signature-label {
+    display: block;
+    margin-bottom: 32px;
+    border-top: 1px solid #e2e8f0;
+    width: 100%;
+    padding-top: 4px;
+    color: #718096;
+}
+
+.loader, .spinner {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.spinner-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        display: block;
+    }
+
+    .signature-label {
+        margin-bottom: 16px;
+    }
+}
+#farmerName {
+    padding-left: 2px;
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        width: 90%;
+        height: 80%;
+        margin: 0 auto;
+        font-size: 15px; /* Reduced font size */
+        display: flex;
+        justify-content: center;
+    }
+    .dark-mode-toggle {
+        display: none !important;
+    }
+    .text-lg{
+        color: #000 !important;
+        font-weight: bold;
+        justify-content: center;
+    }
+    .billdate {
+        font-size: 1rem;   
+    }
+
+    .farmername {
+        font-size: 1rem;
+    }
+    
+    .mulla-dairy {
+        font-size: 3rem;
+        font-weight: 100;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+        box-shadow: none !important;
+    }
+
+    .table {
+        font-size: 15px; /* Reduced font size */
+    }
+
+    .table th, .table td {
+        padding: 2px; /* Reduced padding */
+    }
+
+    .signature-label {
+        margin-right: 40px; /* Reduced margin */
+        margin-top: 8px;
+    }
+
+    .bill-date,
+    .farmer-name,
+    .second-row,
+    .balance,
+    .signature {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bill-date label,
+    .farmer-name label,
+    .second-row label,
+    .balance label,
+    .signature label {
+        font-size: 15px; /* Reduced font size */
+    }
+
+    .container,
+    .table th,
+    .table td,
+    .input,
+    .bill-date input,
+    .farmer-name input,
+    .second-row input,
+    .balance input {
+        box-sizing: border-box;
+        padding: 1.5px;
+        color: #000 !important;
+        font-weight: bold;
+    }
+
+    .bill-date input,
+    .farmer-name input{
+        margin: 0;
+        padding: 0;
+    }
+    .table th,
+    .table td {
+        border-color: #000 !important;
+        color: #000 !important;
+        font-weight: bold;
+    }
+    .container label,
+    .container span,
+    .container .morning,
+    .container .evening {
+
+        border-color: #000 !important;
+        color: #000 !important;
+        font-weight: bold;
+    }
+    .table input {
+        border: none !important;
+    }
+    .table th, .table td {
+        padding: 1.5px; /* Reduced padding for more columns */
+    }
+    
+    .table tfoot tr td:nth-child(3) {
+        /* This targets the 'colspan' cell, assuming the total row has:
+           Date (td) | Total Litres (td) | Total Amount (td with colspan=4)
+           If your layout is different, you may need to adjust this. 
+        */
+        -webkit-column-span: 4; 
+        column-span: 4;
+    }
+}
