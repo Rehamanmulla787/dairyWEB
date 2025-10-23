@@ -226,123 +226,160 @@ img{
 }
 
 /* Print-specific styles */
+/* ==================================== */
+/* === PRINT-SPECIFIC STYLES START === */
+/* ==================================== */
+
 @media print {
-    body {
-        width: 90%;
-        height: 80%;
-        margin: 0 auto;
-        font-size: 15px; /* Reduced font size */
-        display: flex;
-        justify-content: center;
-    }
-    .dark-mode-toggle {
+    /* --- 1. HIDE Non-Essential Elements and Input Boxes --- */
+    .dark-mode-toggle,
+    .controls button,
+    /* HIDE the actual input fields for date and farmer name (the "boxes") */
+    .billDate,
+    .farmerName,
+    .input, /* Hides all other dynamic inputs like rate/quantity inputs */
+    #farmerList, /* Hides the datalist/dropdown */
+    .loader, .spinner, .spinner-overlay,
+    .signature-label:not(#signature)
+    {
         display: none !important;
     }
-    .text-lg{
-        color: #000 !important;
-        font-weight: bold;
-        justify-content: center;
-    }
-    .billdate {
-        font-size: 1rem;   
+    
+    /* --- 2. BASE LAYOUT RESET (For white paper) --- */
+    body {
+        background-color: white !important;
+        color: black !important;
+        margin: 0;
+        padding: 0;
+        min-width: 320px; 
+        font-size: 10pt;
+        display: block; 
     }
 
-    .farmername {
-        font-size: 1rem;
+    /* Target the main container to remove screen styling and borders */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none !important;
+        background-color: transparent !important;
+        padding: 10mm 5mm;
+        margin-top: 0;
+        border: none !important; 
+        border-radius: 0 !important;
+    }
+
+    /* Force all text/elements to print black/white, overriding dark mode */
+    .dark-mode, 
+    .dark-mode *, 
+    .text-lg,
+    .mulla-dairy,
+    .table th, .table td {
+        color: black !important;
+        background-color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
     
     .mulla-dairy {
-        font-size: 3rem;
-        font-weight: 100;
-    }
-
-    .no-print {
-        display: none;
-    }
-
-    .container {
-        margin: 0;
-        padding: 0;
-        box-shadow: none !important;
-    }
-
-    .table {
-        font-size: 15px; /* Reduced font size */
-    }
-
-    .table th, .table td {
-        padding: 2px; /* Reduced padding */
-    }
-
-    .signature-label {
-        margin-right: 40px; /* Reduced margin */
-        margin-top: 8px;
-    }
-
-    .bill-date,
-    .farmer-name,
-    .second-row,
-    .balance,
-    .signature {
-        margin: 0;
-        padding: 0;
-    }
-
-    .bill-date label,
-    .farmer-name label,
-    .second-row label,
-    .balance label,
-    .signature label {
-        font-size: 15px; /* Reduced font size */
-    }
-
-    .container,
-    .table th,
-    .table td,
-    .input,
-    .bill-date input,
-    .farmer-name input,
-    .second-row input,
-    .balance input {
-        box-sizing: border-box;
-        padding: 1.5px;
-        color: #000 !important;
+        font-size: 2rem;
         font-weight: bold;
     }
 
-    .bill-date input,
-    .farmer-name input{
-        margin: 0;
-        padding: 0;
-    }
-    .table th,
-    .table td {
-        border-color: #000 !important;
-        color: #000 !important;
-        font-weight: bold;
-    }
-    .container label,
-    .container span,
-    .container .morning,
-    .container .evening {
-
-        border-color: #000 !important;
-        color: #000 !important;
-        font-weight: bold;
-    }
-    .table input {
-        border: none !important;
-    }
-    .table th, .table td {
-        padding: 1.5px; /* Reduced padding for more columns */
+    /* --- 3. FARMER/BILL DETAILS (Plain Text Display) --- */
+    .farmer-details {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        /* REMOVES ALL BORDERS/BOXES around the details section */
+        border: none !important; 
     }
     
-    .table tfoot tr td:nth-child(3) {
-        /* This targets the 'colspan' cell, assuming the total row has:
-           Date (td) | Total Litres (td) | Total Amount (td with colspan=4)
-           If your layout is different, you may need to adjust this. 
-        */
-        -webkit-column-span: 4; 
-        column-span: 4;
+    .farmer-details .detail {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11pt;
+        padding: 0;
+        margin: 0;
+        border: none !important; /* Ensure individual detail rows have no borders */
+    }
+    
+    /* Show the Farmer Name as text (Requires HTML/JS update below) */
+    #farmerNameDisplay {
+        display: block !important;
+        font-weight: bold;
+        border: none !important; 
+    }
+
+    /* Ensure labels (like the date label) are bold and black */
+    .bill-date label, .farmer-name label, .farmer-details label {
+        font-weight: bold;
+        color: black !important;
+    }
+
+    /* --- 4. TABLE AND DATA FORMATTING --- */
+    .table {
+        margin-top: 10px;
+        box-shadow: none;
+        font-size: 9pt;
+    }
+    
+    .table th, 
+    .table td {
+        border: 1px solid black !important;
+        padding: 4px 6px;
+        text-align: right;
+        color: black !important;
+    }
+
+    .table th {
+        background-color: #f0f0f0 !important;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .table input {
+        /* Hides the input element inside the table cells */
+        display: none !important; 
+    }
+    
+    /* --- 5. TOTALS AND SIGNATURE --- */
+    .totals-section {
+        border-top: 1px solid black;
+        margin-top: 10px;
+        padding-top: 5px;
+    }
+
+    .signature {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+    
+    .signature-area p {
+        width: 45%;
+        border-top: 1px solid black;
+        padding-top: 5px;
+        text-align: center;
+        font-size: 10pt;
+    }
+    button {
+        display: none !important;
+    }
+
+    /* 2. Target any element with a 'control-button' class, based on your original CSS */
+    .control-button {
+        display: none !important;
+    }
+
+    /* 3. Target any specific button containers or common non-printing elements */
+    .dark-mode-toggle,
+    .controls, /* If your buttons are inside a div with class 'controls' */
+    .no-print { /* A standard class often used to hide things */
+        display: none !important;
     }
 }
+
+/* ==================================== */
+/* === PRINT-SPECIFIC STYLES END === */
+/* ==================================== */
