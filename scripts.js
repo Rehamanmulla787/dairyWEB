@@ -767,7 +767,15 @@ function clearData() {
 
     alert("All data cleared successfully");
 }
-
+function prepareForPrint() {
+  document.querySelectorAll("input").forEach(input => {
+    const span = document.createElement("span");
+    span.textContent = input.value || "";
+    span.style.display = "inline-block";
+    input.parentNode.replaceChild(span, input);
+  });
+  window.print();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     // Set today's date on load and generate table rows
@@ -799,3 +807,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --- End of Updated scripts.js ---
+
